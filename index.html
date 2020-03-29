@@ -12,9 +12,11 @@
     </center>
     A page rank algorithm is how search engines, like Google, rank their
     search results by measuring their importance. <br> <br>
-    The Google Page Rank Algorithm, founded by Larry Page and Sergey Brin was
+    The Google Page Rank Algorithm, founded by Larry Page and Sergey Brin while in Stanford, was
     the first algorithm used by Google and was named after one of its founder
     as well as web pages. <br><br>
+    At the time of its development, there were no major search engines that were as efficient as this, paving the way
+    for Google to overtake the market and become the giant they are today.<br><br>
     It isn't the only algorithm used by Google to order search results as it
     is a business secret. However, it is the most well known as the "initial
     prototype of Google search". <br> <br>
@@ -26,7 +28,63 @@
     - The number of other web pages that links to the page in question.<br><br>
     Google PageRank focuses on the third factor where each link going into a website
     is considered a "vote" for the website's importance.<br><br><br><br>
-    <center><h2>What is the actual algorithm?</h2>
-    <img src="pagerank.PNG"></center>
+    <center><h2>What is the simplified algorithm?</h2>
+    <img src ="pagerank1.PNG"><br><br>
+    The page rank of page A is equal to the sum of other pages' page ranks
+    divided by the number of their outbound links going into page A.<br><br>(An outlink
+    or outbound link is a link going from the current page to another page while
+    an inlink is the opposite.)
+    <br><br>
+    The output of this algorithm is the probability distribution of how
+    likely someone is to arrive at this page.<br><br>
+    It is important to note that each link from a page going to another is basically
+    considered as a vote.<br><br>The value of this "vote" varies and is identified by the page's PageRank divided by the number of their outlinks.<br>
+    <br>Therefore, a page with too many outlinks or has too little of its own PageRank will
+    have outlinks(votes) of little value.<br><br>
+    This algorithm is an iterative algorithm which will be addressed later.<br><br><br><br></center>
+
+    <center><h2>What is the algorithm with the damping factor?</h2>
+    Th theory holds that a internet surfer who is randomly clicking on links will eventually stop. <br><br>
+    The probability that the surfer will continue is considered
+    the damping factor or d.<br> <br>It is generally around 0.85.<br><br>
+    <img src="pagerank.PNG"></center><center>
+    The PageRank of a page is equal to the iteration of 1 minus a damping factor
+    plus a damping factor<br> times every pages' PageRank divided by their outlinks
+    to the initial page.<br><br><br><br>
+
+    <h2>The algorithm in action</h2>
+    Take this example of the internet for example where each blue rectangle is a page
+    and each arrow is a link going from one page to another:<br><br>
+    <img src = "example.PNG"><br><br>
+    The application of the algorithm could be visualized with a spreadsheet.
+    <br><br><br><br>
+    <img src = "ranKExample1.PNG"><br><br>
+    To start, we need to identify each variable of the equation in which is list
+    by the first 3 rows for all 5 pages. <br>We need a starting value for each page's PageRank.
+    <br>Normally, all initial PageRank would be one but by using the number of in-links as the initial PageRank
+    we can reduce the number of iterations.<br>It is important to note that even though there are multiple links going
+    from page D to E, they will only be counted as one vote.
+    <br><br><br><br>
+    <img src = "ranKExample3.PNG"><br><br>
+    Next, we need to find the link value of each link going from one page to another.<br>
+    This is identified by the green box while the red box represents a possible link but doesn't exist.
+    <br><br><br><br>
+    <img src = "ranKExample4.PNG"><br><br>
+    Plug everything into the equation for every page in order to determine their new PageRank.
+    <br><br><br><br>
+    <img src = "ranKExample5.PNG"><br><br>
+    However, the PageRank Algorithm is a iterative algorithm. <br>Therefore, you need to replace the initial PageRank with your new PageRank and repeat.
+    <br><br><br><br>
+    <img src = "RankPageGraph.PNG"><br><br>
+    Eventually, the values of each page's PageRank will stablized into a single value.<br><br>
+    The final PageRanks are:<br><br>
+    Page A: 0.799<br><br>
+    Page B: 1.598<br><br>
+    Page C: 2.403<br><br>
+    Page D: 1.602<br><br>
+    Page E: 1.589<br><br>
+    with page B being the most relevant page.
+    </center>
+    <br><br><br><br><br><br><br>
   </body>
 </html>
